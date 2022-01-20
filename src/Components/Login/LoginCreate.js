@@ -1,19 +1,19 @@
 import React from "react";
 import { USER_POST } from "../../api";
-import UseFetch from "../../Hooks/UseFetch";
-import UseForm from "../../Hooks/UseForm";
+import useFetch from "../../Hooks/useFetch";
+import useForm from "../../Hooks/useForm";
 import { UserContext } from "../../UserContext";
 import Button from "../Forms/Button";
 import Error from "../Helper/Error";
 import Input from "../Forms/Input";
 
 const LoginCreate = () => {
-  const username = UseForm();
-  const email = UseForm("email");
-  const password = UseForm("password");
+  const username = useForm();
+  const email = useForm("email");
+  const password = useForm("password");
 
   const { userLogin } = React.useContext(UserContext);
-  const { loading, error, request } = UseFetch();
+  const { loading, error, request } = useFetch();
 
   async function handleSubmit(event) {
     event.preventDefault();
