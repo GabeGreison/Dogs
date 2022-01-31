@@ -8,10 +8,17 @@ import Error from "../Helper/Error";
 import styles from "./LoginForm.module.css";
 import stylesBtn from "../Forms/Button.module.css";
 import Head from "../Helper/Head";
+import { ReactComponent as Eye } from "../../Assets/eye.svg";
+import { ReactComponent as ClosedEye } from "../../Assets/closedEye.svg";
 
 const LoginForm = () => {
   const username = useForm();
   const password = useForm();
+  const [passwordShown, setPasswordShown] = React.useState(false);
+
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(!passwordShown);
+  };
 
   const { userLogin, error, loading } = React.useContext(UserContext);
 
@@ -29,7 +36,18 @@ const LoginForm = () => {
       <h1 className="title">Login</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" {...username} />
-        <Input label="Senha" type="password" name="password" {...password} />
+
+        <div className={styles.passWrapper}>
+          <Input
+            label="Senha"
+            type={passwordShown ? "text" : "password"}
+            name="password"
+            {...password}
+          />
+          <i onClick={togglePasswordVisiblity}>
+            {passwordShown ? <ClosedEye /> : <Eye />}
+          </i>
+        </div>
         {loading ? (
           <Button disabled>Carregando </Button>
         ) : (

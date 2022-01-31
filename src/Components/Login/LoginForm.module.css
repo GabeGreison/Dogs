@@ -41,3 +41,15 @@
   width: 3rem;
   border-radius: 0.2rem;
 }
+
+.passWrapper {
+  position: relative;
+  display: grid;
+}
+
+i {
+  position: absolute;
+  top: 32px;
+  right: 2%;
+  cursor: pointer;
+}
