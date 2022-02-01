@@ -17,10 +17,6 @@ const LoginCreate = () => {
   const password = useForm("password");
   const [passwordShown, setPasswordShown] = React.useState(false);
 
-  const togglePasswordVisiblity = () => {
-    setPasswordShown(!passwordShown);
-  };
-
   const { userLogin } = React.useContext(UserContext);
   const { loading, error, request } = useFetch();
 
@@ -34,6 +30,11 @@ const LoginCreate = () => {
     const { response } = await request(url, options);
     if (response.ok) userLogin(username.value, password.value);
   }
+
+  const passwordVisiblity = () => {
+    setPasswordShown(!passwordShown);
+  };
+
   return (
     <section className="animeLeft">
       <Head title="Criar conta" />
@@ -48,7 +49,7 @@ const LoginCreate = () => {
             name="password"
             {...password}
           />
-          <i onClick={togglePasswordVisiblity}>
+          <i onClick={passwordVisiblity}>
             {passwordShown ? <ClosedEye /> : <Eye />}
           </i>
         </div>{" "}

@@ -16,7 +16,7 @@ const LoginForm = () => {
   const password = useForm();
   const [passwordShown, setPasswordShown] = React.useState(false);
 
-  const togglePasswordVisiblity = () => {
+  const passwordVisiblity = () => {
     setPasswordShown(!passwordShown);
   };
 
@@ -44,7 +44,7 @@ const LoginForm = () => {
             name="password"
             {...password}
           />
-          <i onClick={togglePasswordVisiblity}>
+          <i onClick={passwordVisiblity}>
             {passwordShown ? <ClosedEye /> : <Eye />}
           </i>
         </div>
